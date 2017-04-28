@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Layout_members.master.cs" Inherits="Layout_members" %>
+<%@ Register Src="~/UserControls/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>
+<%@ Register Src="~/UserControls/Header.ascx" TagPrefix="uc1" TagName="Header" %>
+
+
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title></title>
+
+    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+
+    <link rel="stylesheet" type="text/css" href="App_Themes/DefaultTheme/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="App_Themes/DefaultTheme/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="App_Themes/DefaultTheme/css/style.css">
+
+    <script src="App_Themes/DefaultTheme/js/jquery.js" type="text/javascript"></script>
+    <script src="App_Themes/DefaultTheme/js/bootstrap.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="Default.aspx">Gestion de ventes</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Menu1</a>
+                    </li>
+                    <li>
+                        <a href="#">Menu2</a>
+                    </li>
+                    <li>
+                        <a href="#">Menu3</a>
+                    </li>
+                </ul>
+            </div>
+                <span class="pull-right">
+                    <asp:Label ID="Label1" style="font-size: large; font-weight: 700; color: #CCCCCC" runat="server" Text="Label"></asp:Label>
+                </span>
+           <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+<div class="container">
+
+    <div id="my_header">
+        <uc1:Header runat="server" ID="Header" />
+    </div>
+
+    <div id="my_content">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+    </div>
+
+    <div id="my_footer">
+        <uc1:Footer runat="server" ID="Footer" />
+    </div>
+
+</div>
+    
+    </form>
+    
+</body>
+</html>
