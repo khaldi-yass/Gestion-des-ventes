@@ -7,6 +7,8 @@
 
     <div class="well" runat="server">
         <legend>Accueil</legend>
+        <p>Bienvenue sur notre site</p>
+        <img class="img img-responsive" src="/Images/home.jpg" alt="Bienvenue sur notre site" />
     </div>
 
 </asp:Content>

@@ -1,6 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Layout.master.cs" Inherits="Layout" %>
-<%@ Register src="UserControls/Header.ascx" tagname="Header" tagprefix="uc1" %>
-<%@ Register Src="~/UserControls/Header.ascx" TagPrefix="uc2" TagName="Header" %>
 <%@ Register Src="~/UserControls/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>
 
 
@@ -24,10 +22,6 @@
 <body>
 
 <div class="container">
-
-    <div id="my_header">
-        <uc2:Header runat="server" ID="Header" />
-    </div>
 
     <div id="my_content">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>

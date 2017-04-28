@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Footer.ascx.cs" Inherits="UserControls_Footer" %>
 
-        <footer class="footer navbar-fixed-bottom">
+        <footer class="footer">
             <legend> Gestion de ventes</legend>
             <div class="row">
                 <div class="col-lg-12">
