@@ -38,22 +38,26 @@
                 <a class="navbar-brand" href="Default.aspx">Gestion de ventes</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse navbar-header" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Menu1</a>
+                        <a href="ListCat.aspx">Liste des catalogues</a>
                     </li>
                     <li>
-                        <a href="#">Menu2</a>
+                        <a href="Commander.aspx">Lancer une commande</a>
                     </li>
                     <li>
-                        <a href="#">Menu3</a>
+                        <a href="Panier.aspx">Votre panier</a>
+                    </li>
+                    <li>
+                        <a href="Convertisseur.aspx">Convertisseur de devise</a>
                     </li>
                 </ul>
             </div>
-                <span class="pull-right">
-                    <asp:Label ID="Label1" style="font-size: large; font-weight: 700; color: #CCCCCC" runat="server" Text="Label"></asp:Label>
-                </span>
+            <!-- User name -->
+            <div class="navbar-header pull-right navbar-brand">
+                <asp:Label ID="Label1" style=" font-weight: 700;" runat="server" Text="Label"></asp:Label>
+            </div>
            <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
