@@ -12,18 +12,7 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(Session["connected"] != null && Session["connected"].Equals("true"))
-        {
-            Response.Redirect("Default.aspx");
-        }
-        else
-        {
-            if (Session["errorMsg"] != null)
-            {
-                errorLabel.Text = Session["errorMsg"].ToString();
-                Session["errorMsg"] = null;
-            }
-        }
+
     }
 
     protected void Blogin_Click(object sender, EventArgs e)
@@ -35,6 +24,7 @@ public partial class Login : System.Web.UI.Page
 
             conn.Open();
 
+            //cherche si le login est correcte
             SqlCommand commande = new SqlCommand("SELECT COUNT(*) FROM client WHERE login = @login", conn);
             SqlParameter param1 = new SqlParameter("@login", tLogin.Text);
             commande.Parameters.Add(param1);
@@ -42,6 +32,7 @@ public partial class Login : System.Web.UI.Page
             int temp = Convert.ToInt32(commande.ExecuteScalar().ToString());
             conn.Close();
 
+            //si on trouve le login
             if (temp == 1)
             {
                 conn.Open();
@@ -59,32 +50,35 @@ public partial class Login : System.Web.UI.Page
 
                     conn.Close();
 
+                    //mot de passe correcte?
                     if (password.Equals(tPass.Text))
                     {
-                        Session["login"] = tLogin.Text;
-                        Session["nom"] = nom;
-                        Session["prenom"] = prenom;
-                        Session["connected"] = "true";
-
+                        //creation d'une nouvelle instance de la classe MaSession
+                        MaSession session = new MaSession(tLogin.Text, nom, prenom);
+                        Session["userSession"] = session;
+                        //redirection vers la page d'accueil
                         Response.Redirect("Default.aspx");
                     }
                     else
                     {
-                        Session["errorMsg"] = "Erreur: Mot de passe incorrecte";
+                        (this.Master as Layout).showError("Erreur -> Mot de passe incorrecte");
                     }
 
                 }
             }
             else
             {
-                Session["errorMsg"] = "Erreur: Login incorrecte";
+                (this.Master as Layout).showError("Erreur -> Login incorrecte");
             }
 
         }catch(Exception exc)
         {
-            Session["errorMsg"] = "Exception: " + exc.Message;
+            (this.Master as Layout).showError("Exception -> " + exc.Message);
         }
     }
 
+
+    //3 error handling
+    //1 success handling
 
 }

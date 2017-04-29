@@ -7,9 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <div class="container" runat="server">
-        <div class="row" runat="server">
-            <asp:Label class="col-md-6 col-md-offset-3" ID="errorLabel" runat="server" style="color: #FF0000"></asp:Label>
-        </div>
         
         <div class="row" runat="server">
             <form id="form1" runat="server" class="form-horizontal well col-md-8 col-md-offset-2">

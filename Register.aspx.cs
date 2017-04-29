@@ -12,15 +12,10 @@ public partial class Register : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //Remplissage de dropList
         List<string> villes = new List<string>(new string[] { "Rabat", "Casablanca", "Sale", "Safi", "El jadida" });
         SelectVille.DataSource = villes;
         SelectVille.DataBind();
-
-        if (Session["errorMsg"] != null)
-        {
-            errorLabel.Text = Session["errorMsg"].ToString();
-            Session["errorMsg"] = null;
-        }
     }
     
     protected void SelectVille_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,6 +31,7 @@ public partial class Register : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(conString);
             conn.Open();
 
+            //Cherche si le login est deja utilisé
             SqlCommand commande = new SqlCommand("SELECT COUNT(*) FROM client WHERE login = @login", conn);
             SqlParameter param1 = new SqlParameter("@login", tlogin.Text);
             commande.Parameters.Add(param1);
@@ -43,15 +39,16 @@ public partial class Register : System.Web.UI.Page
             int temp = Convert.ToInt32(commande.ExecuteScalar().ToString());
             conn.Close();
 
+            //Si le login est deja utilisee, une erreur s'affiche
             if (temp == 1)
             {
-                Session["errorMsg"] = "Login deja utilisé!";
-                //Response.Redirect("Default.aspx");
+                (this.Master as Layout).showError("Erreur -> Login deja utilisé!");
             }
             else
             {
                 conn.Open();
 
+                //insertion
                 SqlCommand commande2 = new SqlCommand("INSERT INTO client VALUES (@login, @pass, @nom, @prenom, @email,@ville, @tel)", conn);
 
                 commande2.Parameters.AddRange(new[] {
@@ -66,22 +63,27 @@ public partial class Register : System.Web.UI.Page
 
                 int validated = commande2.ExecuteNonQuery();
 
+                //insertion echouee!
                 if (validated != 1)
                 {
-                    Session["errorMsg"] = "Une erreur est survenue, veuillez réessayer plus tard!";
+                    //message d'erreur
+                    (this.Master as Layout).showError("Erreur -> Une erreur inconnue est survenue!");
                 }
                 else
                 {
-                    Session["login"] = tlogin.Text;
-                    Session["nom"] = tnom.Text;
-                    Session["prenom"] = tprenom.Text;
-                    Session["connected"] = "true";
+                    //creation d'une nouvelle instance de la classe MaSession
+                    MaSession session = new MaSession(tlogin.Text, tnom.Text, tprenom.Text);
+                    Session["userSession"] = session;
+                    //redirection vers la page d'acceuil
                     Response.Redirect("Default.aspx");
                 }
             }
         } catch(Exception exce)
         {
-            Session["errorMsg"] = "Exception: " + exce.Message;
+            (this.Master as Layout).showError("Exception -> " + exce.Message);
         }
     }
+
+    //3 error handling
+    //1 success handling
 }

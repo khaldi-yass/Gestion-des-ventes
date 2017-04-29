@@ -23,6 +23,21 @@
 
 <div class="container">
 
+    <asp:Panel ID="errorPanel" runat="server" Visible="False">
+        <div class="alert alert-danger alert-dismissable fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Erreur:</strong> <asp:Label ID="errorLabel" runat="server" Text=""></asp:Label>
+        </div>
+    </asp:Panel>
+
+    <asp:Panel ID="successPanel" runat="server" Visible="false" EnableViewState="False">
+        <div class="alert alert-success alert-dismissable fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Succes:</strong> <asp:Label ID="successLabel" runat="server" Text=""></asp:Label>
+        </div>
+    </asp:Panel>
+
+
     <div id="my_content">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
     </div>

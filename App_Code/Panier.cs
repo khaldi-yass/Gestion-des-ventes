@@ -14,9 +14,7 @@ public class Panier
 
     public Panier()
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        
     }
 
     public float getTotale()
