@@ -86,6 +86,7 @@
     <div id="control_buttons" class="text-center">
         <legend>Autres options</legend>
         <asp:Button class="btn btn-sm btn-danger" ID="Button1" runat="server" Text="Deconnection" OnClick="Button1_Click" />
+        <asp:HyperLink class="btn btn-sm btn-success" ID="HyperLink1" runat="server" NavigateUrl="~/Commander.aspx">Nouvelle commande</asp:HyperLink>
     </div>
 
     <div id="my_footer">

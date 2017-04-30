@@ -27,4 +27,10 @@ public class Panier
 
         return somme;
     }
+
+    public bool isEmpty()
+    {
+        if (ListeCommandes.Count == 0) return true;
+        return false;
+    }
 }

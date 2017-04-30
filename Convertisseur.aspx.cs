@@ -9,14 +9,11 @@ public partial class Convertisseur : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["connected"] != null && Session["connected"].ToString().Equals("true"))
-        {
-            MasterPage master = this.Master;
-            (this.Master as Layout_members).username(Session["nom"].ToString(), Session["prenom"].ToString());
-        }
-        else
-        {
-            Response.Redirect("Login.aspx");
-        }
+        
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        ServiceReference1.CurrencyConvertorSoapClient soapClient = new ServiceReference1.CurrencyConvertorSoapClient();
     }
 }

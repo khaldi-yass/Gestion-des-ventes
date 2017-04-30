@@ -11,23 +11,13 @@ public partial class Details : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["connected"] != null && Session["connected"].ToString().Equals("true"))
+        if (Request.QueryString["articleId"] != null)
         {
-            MasterPage master = this.Master;
-            (this.Master as Layout_members).username(Session["nom"].ToString(), Session["prenom"].ToString());
-
-            if (Request.QueryString["articleId"] != null)
-            {
-                loadInfos();
-            }
-            else
-            {
-                Response.Redirect("ListCat.aspx");
-            }
+            loadInfos();
         }
         else
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("ListCat.aspx");
         }
     }
 
