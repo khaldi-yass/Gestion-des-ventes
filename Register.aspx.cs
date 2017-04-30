@@ -74,6 +74,7 @@ public partial class Register : System.Web.UI.Page
                     //creation d'une nouvelle instance de la classe MaSession
                     MaSession session = new MaSession(tlogin.Text, tnom.Text, tprenom.Text);
                     Session["userSession"] = session;
+                    Session["login"] = session.Login;
                     //redirection vers la page d'acceuil
                     Response.Redirect("Default.aspx");
                 }

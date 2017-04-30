@@ -9,14 +9,6 @@ public partial class Commander : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["connected"] != null && Session["connected"].ToString().Equals("true"))
-        {
-            MasterPage master = this.Master;
-            (this.Master as Layout_members).username(Session["nom"].ToString(), Session["prenom"].ToString());
-        }
-        else
-        {
-            Response.Redirect("Login.aspx");
-        }
+
     }
 }

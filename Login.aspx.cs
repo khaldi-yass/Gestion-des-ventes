@@ -56,6 +56,7 @@ public partial class Login : System.Web.UI.Page
                         //creation d'une nouvelle instance de la classe MaSession
                         MaSession session = new MaSession(tLogin.Text, nom, prenom);
                         Session["userSession"] = session;
+                        Session["login"] = session.Login;
                         //redirection vers la page d'accueil
                         Response.Redirect("Default.aspx");
                     }
